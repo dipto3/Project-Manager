@@ -3,7 +3,7 @@ import Button from "./button/Button";
 export default function AddTaskModal({ onCloseClick }) {
   return (
     <>
-      <div className=" bg-black bg-opacity-90 h-full w-full z-10 absolute top-0 left-0">
+      <div className=" bg-black bg-opacity-60 h-full w-full z-10 absolute top-0 left-0">
         <div className="flex min-h-screen items-center justify-center">
           <div className="mx-auto w-full max-w-md rounded-lg bg-gray-800 shadow-xl">
             <div className="p-6">

@@ -1,3 +1,4 @@
+import Button from "../button/Button";
 import DeleteSvg from "../svg/DeleteSvg";
 import EditSvg from "../svg/EditSvg";
 import FilterSvg from "../svg/FilterSvg";
@@ -8,7 +9,9 @@ export default function ReviseList() {
         <div className="rounded-lg bg-rose-500 p-4">
           <div className="mb-2 flex items-center justify-between">
             <h3 className="text-lg font-semibold">Revise (1)</h3>
-            <FilterSvg />
+            <Button className="" type="submit">
+              <FilterSvg />
+            </Button>
           </div>
           <div className="mb-4 rounded-lg bg-gray-800 p-4">
             <div className="flex justify-between">
@@ -16,12 +19,12 @@ export default function ReviseList() {
                 Content Writer
               </h4>
               <div className="flex gap-2">
-                <button>
+                <Button className="" type="submit">
                   <DeleteSvg />
-                </button>
-                <button>
+                </Button>
+                <Button className="" type="submit">
                   <EditSvg />
-                </button>
+                </Button>
               </div>
             </div>
             <p className="mb-2 text-sm text-zinc-200">
