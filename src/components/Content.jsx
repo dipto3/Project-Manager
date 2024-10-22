@@ -9,13 +9,13 @@ import AddSvg from "./svg/AddSvg";
 export default function Content() {
   const [showModal, setShowModal] = useState(false);
 
-  // function handleAddClick(value) {
-  //   setShowModal(value);
-  // }
+  function handleCloseClick() {
+    setShowModal(false);
+  }
   return (
     <>
       <div className="mx-auto max-w-7xl p-6">
-        {showModal && <AddTaskModal />}
+        {showModal && <AddTaskModal onCloseClick={handleCloseClick} />}
         <div className="mb-6 flex items-center justify-between">
           <h2 className="text-2xl font-bold">Projectify</h2>
           <div className="flex space-x-2">

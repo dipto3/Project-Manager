@@ -1,4 +1,6 @@
-export default function AddTaskModal() {
+import Button from "./button/Button";
+
+export default function AddTaskModal({ onCloseClick }) {
   return (
     <>
       <div className=" bg-black bg-opacity-90 h-full w-full z-10 absolute top-0 left-0">
@@ -69,12 +71,13 @@ export default function AddTaskModal() {
                 </div>
 
                 <div className="flex justify-end space-x-3">
-                  <button
-                    type="button"
+                  <Button
+                    type="submit"
+                    onSmash={onCloseClick}
                     className="rounded-md border border-gray-600 px-4 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-gray-800"
                   >
                     Cancel
-                  </button>
+                  </Button>
                   <button
                     type="submit"
                     className="rounded-md border border-transparent bg-green-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-gray-800"
