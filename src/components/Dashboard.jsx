@@ -1,11 +1,14 @@
 import Content from "./Content";
-import Sidebar from "./Sidebar";
+import Header from "./Header";
 
 export default function Dashboard() {
   return (
     <>
-      <Sidebar />
-      <Content />
+      <main className="flex-1 overflow-y-auto overflow-x-hidden">
+        <Header />
+
+        <Content />
+      </main>
     </>
   );
 }
