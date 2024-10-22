@@ -4,7 +4,7 @@ export default function Header() {
   return (
     <>
       <header className="flex items-center justify-between bg-gray-800 p-4">
-        <button className="lg:hidden">
+      <button className="lg:hidden">
           <svg
             className="h-6 w-6"
             fill="none"
