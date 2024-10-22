@@ -1,5 +1,5 @@
 import Dashboard from "./Dashboard";
-import Sidebar from "./Sidebar";
+import Sidebar from "./partials/Sidebar";
 
 export default function Body() {
   return (
