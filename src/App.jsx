@@ -1,9 +1,13 @@
-function App() {
+import Dashboard from "./components/Dashboard";
+
+export default function App() {
   return (
     <>
-      <h1>Hello</h1>
+      <body className="bg-gray-900 text-white">
+        <div className="flex h-screen">
+          <Dashboard />
+        </div>
+      </body>
     </>
   );
 }
-
-export default App;
