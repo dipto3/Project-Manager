@@ -2,13 +2,13 @@ import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useImmerReducer } from "use-immer";
+import taskReducer from "../reducers/taskReducer";
 import AddTaskModal from "./AddTaskModal";
 import Button from "./button/Button";
 import DoneList from "./category/DoneList";
 import OnProgressList from "./category/OnProgressList";
 import ReviseList from "./category/ReviseList";
 import ToDoList from "./category/ToDoList";
-import taskReducer from "./reducers/taskReducer";
 import AddSvg from "./svg/AddSvg";
 export default function Content() {
   const [showModal, setShowModal] = useState(false);
@@ -75,7 +75,7 @@ export default function Content() {
   );
 
   function handleSort() {
-    setIsAscending(!isAscending); // Toggle sorting order
+    setIsAscending(!isAscending);
   }
   return (
     <>
