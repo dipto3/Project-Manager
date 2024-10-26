@@ -2,7 +2,7 @@ import Button from "../button/Button";
 import Empty from "../Empty";
 import FilterSvg from "../svg/FilterSvg";
 import Task from "../Task";
-export default function OnProgressList({ tasks, onEdit, onDelete }) {
+export default function OnProgressList({ tasks, onEdit, onDelete, onSort }) {
   const taskList =
     tasks.length > 0 ? (
       tasks.map((task) => (
@@ -19,7 +19,7 @@ export default function OnProgressList({ tasks, onEdit, onDelete }) {
             <h3 className="text-lg font-semibold">
               On Progress ({tasks.length})
             </h3>
-            <Button className="" type="submit">
+            <Button className="" type="submit" onSmash={onSort}>
               <FilterSvg />
             </Button>
           </div>

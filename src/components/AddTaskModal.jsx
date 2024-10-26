@@ -2,8 +2,6 @@ import { useState } from "react";
 import Button from "./button/Button";
 
 export default function AddTaskModal({ taskEdit , onAdd, onEditTask, onCloseClick }) {
-  
-
   const [task, setTask] = useState(
     taskEdit || {
       taskName: "",

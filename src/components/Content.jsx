@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useImmerReducer } from "use-immer";
 import AddTaskModal from "./AddTaskModal";
 import Button from "./button/Button";
@@ -12,11 +14,20 @@ export default function Content() {
   const [showModal, setShowModal] = useState(false);
   const [tasks, dispatch] = useImmerReducer(taskReducer, []);
   const [taskEdit, setTaskEdit] = useState(null);
+  const [isAscending, setIsAscending] = useState(true);
 
   function handleCloseClick() {
     setShowModal(false);
+    setTaskEdit(null);
   }
   function handleAddTask(task) {
+    const { taskName, description, date, category } = task;
+    if (!taskName || !description || !date || category === "Choose") {
+      toast.error("Please fill in all fields correctly.");
+      return;
+    }
+
+    toast.success("Task Created successfully!");
     // console.log(task);
     dispatch({
       type: "added",
@@ -32,28 +43,40 @@ export default function Content() {
     setShowModal(true);
   }
 
-  function handleEdit(task){
+  function handleEdit(task) {
     dispatch({
       type: "edited",
       task: task,
     });
+    toast.info("Task Updated successfully!");
     setShowModal(false);
     setTaskEdit(null);
   }
 
   function handleDeleteTask(taskId) {
+    toast.error("Task Deleted successfully!");
     dispatch({
       type: "deleted",
       id: taskId,
     });
   }
 
-  const toDoList = tasks.filter((task) => task.category === "To-Do");
-  const doneList = tasks.filter((task) => task.category === "Done");
-  const revisedList = tasks.filter((task) => task.category === "Revised");
-  const onProgressList = tasks.filter(
+  const sortedTasks = [...tasks].sort((a, b) => {
+    const dateA = new Date(a.date);
+    const dateB = new Date(b.date);
+    return isAscending ? dateA - dateB : dateB - dateA; // Ascending or descending order
+  });
+
+  const toDoList = sortedTasks.filter((task) => task.category === "To-Do");
+  const doneList = sortedTasks.filter((task) => task.category === "Done");
+  const revisedList = sortedTasks.filter((task) => task.category === "Revised");
+  const onProgressList = sortedTasks.filter(
     (task) => task.category === "On Progress"
   );
+
+  function handleSort() {
+    setIsAscending(!isAscending); // Toggle sorting order
+  }
   return (
     <>
       <div className="mx-auto max-w-7xl p-6">
@@ -84,23 +107,28 @@ export default function Content() {
             tasks={toDoList}
             onEdit={handleEditTask}
             onDelete={handleDeleteTask}
+            onSort={handleSort}
           />
           <OnProgressList
             tasks={onProgressList}
             onDelete={handleDeleteTask}
             onEdit={handleEditTask}
+            onSort={handleSort}
           />
           <DoneList
             tasks={doneList}
             onDelete={handleDeleteTask}
             onEdit={handleEditTask}
+            onSort={handleSort}
           />
           <ReviseList
             tasks={revisedList}
             onDelete={handleDeleteTask}
             onEdit={handleEditTask}
+            onSort={handleSort}
           />
         </div>
+        <ToastContainer />
       </div>
     </>
   );

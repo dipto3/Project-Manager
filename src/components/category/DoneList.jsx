@@ -2,7 +2,7 @@ import Button from "../button/Button";
 import Empty from "../Empty";
 import FilterSvg from "../svg/FilterSvg";
 import Task from "../Task";
-export default function DoneList({ tasks, onEdit, onDelete }) {
+export default function DoneList({ tasks, onEdit, onDelete, onSort }) {
   const taskList =
     tasks.length > 0 ? (
       tasks.map((task) => (
@@ -17,7 +17,7 @@ export default function DoneList({ tasks, onEdit, onDelete }) {
         <div className="rounded-lg bg-teal-500 p-4">
           <div className="mb-2 flex items-center justify-between">
             <h3 className="text-lg font-semibold">Done ({tasks.length})</h3>
-            <Button className="" type="submit">
+            <Button className="" type="submit" onSmash={onSort}>
               <FilterSvg />
             </Button>
           </div>

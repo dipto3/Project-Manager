@@ -2,12 +2,11 @@ import Button from "../button/Button";
 import Empty from "../Empty";
 import FilterSvg from "../svg/FilterSvg";
 import Task from "../Task";
-export default function ToDoList({ tasks,onEdit, onDelete }) {
-
+export default function ToDoList({ tasks, onEdit, onDelete, onSort }) {
   const taskList =
     tasks.length > 0 ? (
       tasks.map((task) => (
-        <Task key={task.id} task={task} onEdit={onEdit}  onDelete={onDelete}/>
+        <Task key={task.id} task={task} onEdit={onEdit} onDelete={onDelete} />
       ))
     ) : (
       <Empty />
@@ -18,7 +17,7 @@ export default function ToDoList({ tasks,onEdit, onDelete }) {
         <div className="rounded-lg bg-indigo-600 p-4">
           <div className="mb-2 flex items-center justify-between">
             <h3 className="text-lg font-semibold">To-Do ({tasks.length})</h3>
-            <Button className="" type="submit">
+            <Button className="" type="submit" onSmash={onSort}>
               <FilterSvg />
             </Button>
           </div>
