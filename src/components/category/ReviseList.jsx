@@ -1,7 +1,6 @@
 import Button from "../button/Button";
-import DeleteSvg from "../svg/DeleteSvg";
-import EditSvg from "../svg/EditSvg";
 import FilterSvg from "../svg/FilterSvg";
+import Task from "../Task";
 export default function ReviseList() {
   return (
     <>
@@ -13,26 +12,7 @@ export default function ReviseList() {
               <FilterSvg />
             </Button>
           </div>
-          <div className="mb-4 rounded-lg bg-gray-800 p-4">
-            <div className="flex justify-between">
-              <h4 className="mb-2 font-semibold text-rose-500">
-                Content Writer
-              </h4>
-              <div className="flex gap-2">
-                <Button className="" type="submit">
-                  <DeleteSvg />
-                </Button>
-                <Button className="" type="submit">
-                  <EditSvg />
-                </Button>
-              </div>
-            </div>
-            <p className="mb-2 text-sm text-zinc-200">
-              Make Promotional Ads for Instagram {`fasto's`}
-            </p>
-
-            <p className="mt-6 text-xs text-zinc-400">February 20, 2024</p>
-          </div>
+          <Task />
         </div>
       </div>
     </>
