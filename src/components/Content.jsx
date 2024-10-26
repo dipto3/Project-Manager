@@ -64,7 +64,7 @@ export default function Content() {
   const sortedTasks = [...tasks].sort((a, b) => {
     const dateA = new Date(a.date);
     const dateB = new Date(b.date);
-    return isAscending ? dateA - dateB : dateB - dateA; // Ascending or descending order
+    return isAscending ? dateA - dateB : dateB - dateA;
   });
 
   const toDoList = sortedTasks.filter((task) => task.category === "To-Do");
