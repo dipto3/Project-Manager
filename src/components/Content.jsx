@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useImmerReducer } from "use-immer";
+import { SearchContext } from "../context/SearchContext";
 import taskReducer from "../reducers/taskReducer";
 import AddTaskModal from "./AddTaskModal";
 import Button from "./button/Button";
@@ -15,6 +16,7 @@ export default function Content() {
   const [tasks, dispatch] = useImmerReducer(taskReducer, []);
   const [taskEdit, setTaskEdit] = useState(null);
   const [isAscending, setIsAscending] = useState(true);
+  const { search } = useContext(SearchContext);
 
   function handleCloseClick() {
     setShowModal(false);
@@ -61,11 +63,15 @@ export default function Content() {
     });
   }
 
-  const sortedTasks = [...tasks].sort((a, b) => {
-    const dateA = new Date(a.date);
-    const dateB = new Date(b.date);
-    return isAscending ? dateA - dateB : dateB - dateA;
-  });
+  const sortedTasks = tasks
+    .filter((task) =>
+      (task.taskName || "").toLowerCase().includes((search || "").toLowerCase())
+    )
+    .sort((a, b) => {
+      const dateA = new Date(a.date);
+      const dateB = new Date(b.date);
+      return isAscending ? dateA - dateB : dateB - dateA;
+    });
 
   const toDoList = sortedTasks.filter((task) => task.category === "To-Do");
   const doneList = sortedTasks.filter((task) => task.category === "Done");
